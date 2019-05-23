@@ -2,7 +2,7 @@ package dominio;
 
 public class Divisibilidad {
 
-		public static int num, prod=0, suma=0;
+		public static int num, prod=0, suma1=0, b=0, suma2=0;
 
 		public static boolean esDivisiblePorDos(int i) {
 			num=i%10;
@@ -13,16 +13,16 @@ public class Divisibilidad {
 		}
 
 		public static boolean esDivisiblePorTres(int i) {
-			if(i>10)
-				while(i>10) {
-					num=i%10;
-					prod+=num;
-					i/=10;
+			suma1=0;
+			if(i<10)
+				suma1=i;
+			while(i>10) {
+				b=i%10;
+				i/=10;
+				suma1+=b;
 			}
-			else
-				prod=i;
-			prod+=i;
-			if(prod%3==0)
+			suma1+=i;
+			if(suma1%3==0)
 				return true;
 			else
 				return false;
@@ -47,7 +47,7 @@ public class Divisibilidad {
 		}
 
 		public static boolean esDivisiblePorSeis(int i) {
-			if((i%2==0)||(i%3==0))
+			if((i%2==0)&&(i%3==0))
 				return true;
 			else
 				return false;
@@ -55,13 +55,13 @@ public class Divisibilidad {
 
 		public static boolean esDivisiblePorSiete(int i) {
 			if(i>10) {
-				num=i%10;
-				num*=2;
+				b=i%10;
+				b*=2;
 				i/=10;
 			}
-			if((num-i==0) || (num-i)%7==0)
+			if(b-i==0 || (b-i)%7==0)
 				return true;
-			else 
+			else
 				return false;
 		}
 
@@ -75,16 +75,15 @@ public class Divisibilidad {
 		}
 
 		public static boolean esDivisiblePorNueve(int i) {
-			if(i>10)
-				while(i>10) {
-					num=i%10;
-					prod+=num;
-					i/=10;
+			if(i<10)
+				suma1=i;
+			while(i>10) {
+				b=i%10;
+				i/=10;
+				suma1+=b;
 			}
-			else
-				prod=i;
-			prod+=i;
-			if(prod%9==0)
+			suma1+=i;
+			if(suma1%9==0)
 				return true;
 			else
 				return false;
@@ -98,30 +97,28 @@ public class Divisibilidad {
 		}
 
 		public static boolean esDivisiblePorOnce(int i) {
-			int mod=0, suma2=0, mod2=0, cond=0;
-			if(i<10)
-				suma=i;
-			while(i>10) {
-				mod=i%10;
-				i/=10;
-				suma+=mod;
+			int cond=0, mod=0;
+			if(num<10)
+				suma1=num;
+			while(num>10) {
+				b=num%10;
+				num/=10;
+				suma1+=b;
 				cond=1;
-				if(i<10)
+				if(num<10)
 					break;
-				mod2=i%10;
-				i/=10;
-				suma2+=mod2;
+				mod=num%10;
+				num/=10;
+				suma2+=mod;
 				cond=0;
 			}
 			if(cond==1)
-				suma2+=i;
+				suma2+=num;
 			else
-				suma+=i;
-			if((suma-suma2==0) || (suma-suma2)%11==0)
+				suma1+=num;
+			if(suma1-suma2==0 || (suma1-suma2)%11==0)
 				return true;
 			else
 				return false;
-		}
-
-		
+		}		
 }
