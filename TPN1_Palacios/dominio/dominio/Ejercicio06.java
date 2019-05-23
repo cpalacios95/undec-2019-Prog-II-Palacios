@@ -18,23 +18,21 @@ public class Ejercicio06 {
 	}
 	
 	public static String imprimirMatriz(int filas, int columnas, int base) {
-		String a="";
+		String b="";
 		for (int i = 0; i < filas; i++) {
 			for (int j = 0; j < columnas; j++) {
-				a=a+base;
+				b=b+base;
 				base++;
 				if(j==columnas-1)
 					break;
-				a=a+"\t";
+				b=b+"\t";
 			}
 			if(i==filas-1)
 				break;
-			a=a+"\n";
+			b=b+"\n";
 		}
-		return a;
+		return b;
 	}
 	
 	
 }
-
-

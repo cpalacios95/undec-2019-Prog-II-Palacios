@@ -17,71 +17,80 @@ public class Hora {
 			segundo=0;
 		this.segundo=segundo;
 	}
-	
 	public int getHora() {
-
 		return this.hora;
 	}
 	public int getMinuto() {
 		return this.minuto;
 	}
 	public int getSegundo() {
-		return this.segundo; 
+		return this.segundo;
 	}
-	
 	public Hora() {
 		super();
 	}
-	public String getHoraConFormato(){
+	public String getHoraConFormato() {
 		return Utiles.LPAD(this.hora, 2)+":"+Utiles.LPAD(this.minuto, 2)+":"+Utiles.LPAD(this.segundo, 2);
 	}
-
-	public void setHora(int hora) {
-		this.hora = hora;
-	}
-
-	public void setMinuto(int minuto) {
-		this.minuto = minuto;
-	}
-
-	public void setSegundo(int segundo) {
-		this.segundo = segundo;
-	}
-
-	public String addHora(int hora) {
-		int aux=0;
-		if(hora>23) {
-			aux=hora/24;
-			this.hora+=hora;
-			this.hora= this.hora-(24*aux);
-		}
-		else {
-			if(this.hora+=hora>24)
-				this.hora-=24;
-			else
-				this.hora+=hora;
-		}
+	public String setHora(int hora) {
+		this.hora=hora;
 		return getHoraConFormato();
 	}
-
+	public String setMinuto(int minuto) {
+		this.minuto=minuto;
+		return getHoraConFormato();
+	}
+	public String setSegundo(int segundo) {
+		this.segundo=segundo;
+		return getHoraConFormato();
+	}
+	public String addHora(int hora) {
+		int a=0;
+		this.hora+= hora;  
+		a=this.hora/24;
+		while(this.hora>23) {
+			this.hora-=24*a;
+		}
+		while(this.hora<0)
+			this.hora=24+(this.hora%24);
+		if(this.hora==24)
+			this.hora=00;
+		return getHoraConFormato();
+	}
 	public String addMinuto(int minuto) {
-		int c=0;
-		this.minuto+=minuto;
-		if(this.minuto>=60) {
+		int c=0, a = 1;
+		this.minuto+= minuto; 
+		a=this.minuto/60;
+		while(this.minuto>59) {
+			this.minuto=this.minuto%60;
 			c=1;
-			this.minuto-=60;
+		}
+		if(this.minuto<0) {
+			this.minuto=60+(this.minuto%60);
+			c=-1;
 		}
 		if(c==1)
-			this.hora+=1;
+			addHora(a);
+		if(c==-1)
+			addHora(a-1);
 		return getHoraConFormato();
 	}
-
 	public String addSegundo(int segundo) {
-		this.segundo+=segundo;
-		if(this.segundo>=60)
-			this.segundo-=60;
+		int c=0, a = 0;
+		this.segundo+= segundo;  
+		a=this.segundo/60;
+		while(this.segundo>59) {
+			this.segundo=this.segundo%60;
+			c=1;
+		}
+		if(this.segundo<0) {
+			this.segundo=60+(this.segundo%60);
+			c=-1;
+		}
+		if(c==1)
+			addMinuto(a);
+		if(c==-1)
+			addMinuto(a-1);
 		return getHoraConFormato();
 	}
-	
-	
 }
