@@ -96,7 +96,7 @@ public class Divisibilidad {
 				return false;
 		}
 
-		public static boolean esDivisiblePorOnce(int i) {
+		public static boolean esDivisiblePorOnce(int num) {
 			int cond=0, mod=0;
 			if(num<10)
 				suma1=num;
