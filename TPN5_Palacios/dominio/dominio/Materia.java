@@ -43,5 +43,30 @@ public class Materia {
 			return false;
 		return true;
 	}
-	
-} 
+	public String getNombreMatFormato() {
+		String aux1= "", aux2="";
+		int i;
+		String [] palabras= abreviatura.split(" ");
+		for(i=0; i< palabras.length; i++)
+			if(palabras[i].length()>3)
+				aux2+=palabras[i].substring(0, 1);
+		String[] palabra = nombre.split(" ");
+		for(i = 0; i < palabra.length; i++)
+				aux1+= palabra[i].substring(0,1).toUpperCase()+palabra[i].substring(1,(palabra[i].length()<3)?palabra[i].length():3).toLowerCase();
+		return aux2.toUpperCase() + " - " + aux1;
+	}
+	public String getNombreNumRomano() {
+		String aux1= "", aux2="";
+		int i;
+		String [] palabras= abreviatura.split(" ");
+		for(i=0; i< palabras.length; i++)
+			if(palabras[i].length()>3)
+				aux2+=palabras[i].substring(0, 1);
+		aux2+=anioacademico.toString();
+		String[] palabra = nombre.split(" ");
+		for(i = 0; i < palabra.length; i++)
+				aux1+= palabra[i].substring(0,1).toUpperCase()+palabra[i].substring(1,(palabra[i].length()<3)?palabra[i].length():3).toLowerCase();
+		return aux2.toUpperCase() + " - " + aux1;
+
+	} 
+}

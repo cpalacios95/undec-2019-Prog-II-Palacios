@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import dominio.AnioAcademico;
 import dominio.Carrera;
+import dominio.Materia;
 
 class Test02 {
 
@@ -80,35 +82,35 @@ class Test02 {
 	@Test
 	void test2_1() {
 		//Arrange 
-		Materia m01= new Materia("Administracion de Empresas", "Ingenieria en Sistemas", Anio_Academico.I);
+		Materia m01= new Materia("Administracion de Empresas", "Ingenieria en Sistemas", AnioAcademico.I);
 		String MateriaEsperada01="IS - AdmDeEmp";
-		Materia m02= new Materia("Electronica Digital", "Ingenieria en Sistemas", Anio_Academico.II);
+		Materia m02= new Materia("Electronica Digital", "Ingenieria en Sistemas", AnioAcademico.II);
 		String MateriaEsperada02="IS - EleDig";
-		Materia m03= new Materia("Sistema Operativo I", "Licenciatura en Sistemas", Anio_Academico.II);
+		Materia m03= new Materia("Sistema Operativo I", "Licenciatura en Sistemas", AnioAcademico.II);
 		String MateriaEsperada03="LS - SisOpeI";
 		//Act 
-		String actual01 = m01.getNombreMatFormat5();
-		String actual02 = m01.getNombreMatFormat5();
-		String actual03 = m01.getNombreMatFormat5();
+		String actual01 = m01.getNombreMatFormato();
+		String actual02 = m02.getNombreMatFormato();
+		String actual03 = m03.getNombreMatFormato();
 		//Assert
 		assertEquals(MateriaEsperada01, actual01);
 		assertEquals(MateriaEsperada02, actual02);
-		assertEquals(MateriaEsperada03, actual03);
+		assertEquals(MateriaEsperada03, actual03); 
 	}
 
 	@Test 
-	void test2_2() {
+	void test2_2(){
 		//Arrange 
-		Materia m01= new Materia("Administracion de Empresas", "Ingenieria en Sistemas", Anio_Academico.I);
-		String MateriaEsperada01="ISI- ADE";
-		Materia m02= new Materia("Electronica Digital", "Ingenieria en Sistemas", Anio_Academico.II);
-		String MateriaEsperada02="ISI- ED";
-		Materia m03= new Materia("Sistema Operativo I", "Licenciatura en Sistemas", Anio_Academico.II);
-		String MateriaEsperada03="LSII- SOI";
+		Materia m01= new Materia("Administracion de Empresas", "Ingenieria en Sistemas", AnioAcademico.I);
+		String MateriaEsperada01="ISI - AdmDeEmp";
+		Materia m02= new Materia("Electronica Digital", "Ingenieria en Sistemas", AnioAcademico.I);
+		String MateriaEsperada02="ISI - EleDig";
+		Materia m03= new Materia("Sistema Operativo I", "Licenciatura en Sistemas", AnioAcademico.II);
+		String MateriaEsperada03="LSII - SisOpeI";
 		//Act 
 		String actual01 = m01.getNombreNumRomano();
-		String actual02 = m01.getNombreNumRomano();
-		String actual03 = m01.getNombreNumRomano();
+		String actual02 = m02.getNombreNumRomano();
+		String actual03 = m03.getNombreNumRomano();
 		//Assert
 		assertEquals(MateriaEsperada01, actual01);
 		assertEquals(MateriaEsperada02, actual02);
